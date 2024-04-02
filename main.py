@@ -9,5 +9,10 @@ def main ():
     resultado = metodo_jacobi(matriz_a, matriz_x, matriz_b, iteraciones)
     imprimir_resultados(resultado, iteraciones)
 
+    if es_matriz_bien_condicionada(matriz_a):
+        print("La matriz que proporcionaste está bien condicionada.")
+    else:
+        print("La matriz que proporcionaste no está bien condicionada.")
+
 
 main ()
