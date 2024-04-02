@@ -20,6 +20,6 @@ def main ():
             imprimir_resultados(resultado, iteraciones)
             break
         else:
-            print("}nLa matriz proporcionada no está bien condicionada. Por favor vuelva a intentarlo.")
+            print("\nLa matriz proporcionada no está bien condicionada. Por favor vuelva a intentarlo.")
     
 main ()
