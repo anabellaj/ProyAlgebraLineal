@@ -63,8 +63,8 @@ def pedir_iteraciones():
     while True:
         try:
             iteraciones = int(input('\nPor favor ingrese la cantidad de iteraciones a realizar\n>> '))
-            if iteraciones not in range (1, 16):
-                print('\nERROR - Únicamente se permiten de 1 a 15 ecuaciones')
+            if iteraciones not in range (1, 101):
+                print('\nERROR - Únicamente se permiten de 1 a 100 ecuaciones')
             else:
                 return iteraciones
         except:
@@ -90,3 +90,20 @@ def imprimir_resultados(x_values, iteraciones):
     print(f'\nLuego de realizar {iteraciones} iteraciones utilizando el método jacobí, se obtuvieron los siguientes resultados: ')
     for i, x in enumerate(x_values):
         print(f'X{i+1}: {x}')
+    print('\n\n\n')
+        
+        
+def es_matriz_bien_condicionada(matriz):
+    matriz_np = np.array(matriz)
+    
+    for i in range(matriz_np.shape[0]):
+        suma = np.sum(np.abs(matriz_np[i, :])) - np.abs(matriz_np[i, i])
+        if matriz_np[i, i] <= suma:
+            return False
+            
+    return True
+
+def print_matriz(matriz):   
+    for row in matriz:
+        print(f'[{row}]')
+        
