@@ -21,18 +21,18 @@ def main ():
             break
 
         else:
-            # intentos = 0
-            # while not es_matriz_bien_condicionada(matriz_a) and intentos < 10:
-            print("\nLa matriz proporcionada no está bien condicionada. Intentando reordenar la matriz...")
-            matriz_a = reordenar_matriz(matriz_a)
-            print(f'Se reordena la matriz y resulta:\n')
-            print('Matriz A: ')
-            print_matriz(matriz_a)
-            print('\nMatriz X: ')
-            print_matriz(matriz_x)
-            print('\nMatriz b: ')
-            print_matriz(matriz_b)
-            # intentos += 1
+            intentos = 0
+            while not es_matriz_bien_condicionada(matriz_a) and intentos < 10:
+                print("\nLa matriz proporcionada no está bien condicionada. Intentando reordenar la matriz...")
+                matriz_a, matriz_b = reordenar_matriz(matriz_a, matriz_b)
+                print(f'Se reordena la matriz y resulta:\n')
+                print('Matriz A: ')
+                print_matriz(matriz_a)
+                print('\nMatriz X: ')
+                print_matriz(matriz_x)
+                print('\nMatriz b: ')
+                print_matriz(matriz_b)
+                intentos += 1
 
             if es_matriz_bien_condicionada(matriz_a):
                 print("\nLa matriz reordenada está bien condicionada.")
@@ -42,6 +42,6 @@ def main ():
                 break
             else:
                 print(
-                    "\nLa matriz reordenada sigue sin estar bien condicionada. Por favor vuelva a intentarlo.")
+                    "\nLa matriz reordenada sigue sin estar bien condicionada después de 10 intentos. Por favor vuelva a intentarlo.")
     
 main ()

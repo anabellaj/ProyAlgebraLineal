@@ -106,16 +106,19 @@ def es_matriz_bien_condicionada(matriz):
     return True
 
 
-def reordenar_matriz(matriz):
+def reordenar_matriz(matriz, matriz_b):
 
     matriz_np = np.array(matriz)
+    matriz_b_np = np.array(matriz_b)
 
-    permutaciones = list(permutations(matriz_np))
+    permutaciones = list(permutations(range(matriz_np.shape[0])))
 
-    for matriz_permutada in permutaciones:
-        matriz_permutada_np = np.array(matriz_permutada)
+    for permutacion in permutaciones:
+        matriz_permutada_np = matriz_np[list(permutacion), :]
         if es_matriz_bien_condicionada(matriz_permutada_np):
-            return matriz_permutada_np.tolist()
+
+            matriz_b_permutada_np = matriz_b_np[list(permutacion)]
+            return matriz_permutada_np.tolist(), matriz_b_permutada_np.tolist()
 
     return matriz_np.tolist()
 # def reordenar_matriz(matriz):
