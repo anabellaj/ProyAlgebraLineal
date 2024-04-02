@@ -19,7 +19,28 @@ def main ():
             resultado = metodo_jacobi(matriz_a, matriz_x, matriz_b, iteraciones)
             imprimir_resultados(resultado, iteraciones)
             break
+
         else:
-            print("}nLa matriz proporcionada no está bien condicionada. Por favor vuelva a intentarlo.")
+            # intentos = 0
+            # while not es_matriz_bien_condicionada(matriz_a) and intentos < 10:
+            print("\nLa matriz proporcionada no está bien condicionada. Intentando reordenar la matriz...")
+            matriz_a = reordenar_matriz(matriz_a)
+            print(f'Se reordena la matriz y resulta:\n')
+            print('Matriz A: ')
+            print_matriz(matriz_a)
+            print('\nMatriz X: ')
+            print_matriz(matriz_x)
+            print('\nMatriz b: ')
+            print_matriz(matriz_b)
+            # intentos += 1
+
+            if es_matriz_bien_condicionada(matriz_a):
+                print("\nLa matriz reordenada está bien condicionada.")
+                iteraciones = pedir_iteraciones()
+                resultado = metodo_jacobi(matriz_a, matriz_x, matriz_b, iteraciones)
+                imprimir_resultados(resultado, iteraciones)
+            else:
+                print(
+                    "\nLa matriz reordenada sigue sin estar bien condicionada. Por favor vuelva a intentarlo.")
     
 main ()
