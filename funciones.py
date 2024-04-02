@@ -121,6 +121,7 @@ def reordenar_matriz(matriz, matriz_b):
             return matriz_permutada_np.tolist(), matriz_b_permutada_np.tolist()
 
     return matriz_np.tolist()
+
 # def reordenar_matriz(matriz):
 #     matriz_np = np.array(matriz)
 
