@@ -1,4 +1,5 @@
 import numpy as np
+from itertools import permutations
 
 def pedir_dimension():
     while True:
@@ -86,6 +87,7 @@ def metodo_jacobi(matriz_a, matriz_x, matriz_b, iteraciones):
         x_values = new_x_values
     return x_values
 
+
 def imprimir_resultados(x_values, iteraciones):
     print(f'\nLuego de realizar {iteraciones} iteraciones utilizando el método jacobí, se obtuvieron los siguientes resultados: ')
     for i, x in enumerate(x_values):
@@ -102,6 +104,21 @@ def es_matriz_bien_condicionada(matriz):
             return False
             
     return True
+
+
+def reordenar_matriz(matriz):
+
+    matriz_np = np.array(matriz)
+
+    permutaciones = list(permutations(matriz_np))
+
+    for matriz_permutada in permutaciones:
+        matriz_permutada_np = np.array(matriz_permutada)
+        if es_matriz_bien_condicionada(matriz_permutada_np):
+            return matriz_permutada_np.tolist()
+
+    return matriz_np.tolist()
+
 
 def print_matriz(matriz):   
     for row in matriz:
