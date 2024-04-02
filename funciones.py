@@ -120,7 +120,7 @@ def reordenar_matriz(matriz, matriz_b):
             matriz_b_permutada_np = matriz_b_np[list(permutacion)]
             return matriz_permutada_np.tolist(), matriz_b_permutada_np.tolist()
 
-    return matriz_np.tolist()
+    return matriz_np.tolist(), matriz_b
 
 # def reordenar_matriz(matriz):
 #     matriz_np = np.array(matriz)
