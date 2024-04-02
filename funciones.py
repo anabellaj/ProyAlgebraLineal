@@ -3,11 +3,11 @@ import numpy as np
 def pedir_dimension():
     while True:
         try:
-            dimension = int(input('Por favor ingrese la cantidad de ecuaciones a proporcional al programa\n>> '))
+            dimension = int(input('Por favor ingrese la cantidad de ecuaciones a proporcionar al programa\n>> '))
             if dimension not in range (2, 7):
                 print('\nERROR - Únicamente se permiten de 2 a 7 ecuaciones')
             else:
-                break
+                return dimension
         except:
             print('\nERROR - Por favor ingrese únicamente números, sin letras')
     # ecuaciones = pedir_ecuaciones(dimension)
@@ -59,3 +59,34 @@ def convertir_matricial(ecuaciones, dimension):
     return matriz_a, matriz_x, matriz_b
         
       
+def pedir_iteraciones():
+    while True:
+        try:
+            iteraciones = int(input('\nPor favor ingrese la cantidad de iteraciones a realizar\n>> '))
+            if iteraciones not in range (1, 16):
+                print('\nERROR - Únicamente se permiten de 1 a 15 ecuaciones')
+            else:
+                return iteraciones
+        except:
+            print('\nERROR - Por favor ingrese únicamente números, sin letras')
+            
+
+
+def metodo_jacobi(matriz_a, matriz_x, matriz_b, iteraciones):
+    dimension = len(matriz_x)
+    x_values = [0] * dimension  
+    for y in range(iteraciones):
+        new_x_values = [0] * dimension
+        for i in range(dimension):
+            sum_term = 0
+            for j in range(dimension):
+                if j != i:
+                    sum_term += matriz_a[i][j] * x_values[j]
+            new_x_values[i] = (matriz_b[i] - sum_term) / matriz_a[i][i]
+        x_values = new_x_values
+    return x_values
+
+def imprimir_resultados(x_values, iteraciones):
+    print(f'\nLuego de realizar {iteraciones} iteraciones utilizando el método jacobí, se obtuvieron los siguientes resultados: ')
+    for i, x in enumerate(x_values):
+        print(f'X{i+1}: {x}')
