@@ -100,7 +100,7 @@ def es_matriz_bien_condicionada(matriz):
     
     for i in range(matriz_np.shape[0]):
         suma = np.sum(np.abs(matriz_np[i, :])) - np.abs(matriz_np[i, i])
-        if matriz_np[i, i] <= suma:
+        if np.abs(matriz_np[i, i])  <= suma:
             return False
             
     return True
@@ -118,7 +118,18 @@ def reordenar_matriz(matriz):
             return matriz_permutada_np.tolist()
 
     return matriz_np.tolist()
+# def reordenar_matriz(matriz):
+#     matriz_np = np.array(matriz)
 
+#     indices = list(range(matriz_np.shape[0]))
+#     permutaciones = list(permutations(indices))
+
+#     for permutacion in permutaciones:
+#         matriz_permutada = matriz_np[list(permutacion), :]
+#         if es_matriz_bien_condicionada(matriz_permutada):
+#             return matriz_permutada.tolist()
+
+#     return matriz_np.tolist()
 
 def print_matriz(matriz):   
     for row in matriz:

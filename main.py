@@ -39,6 +39,7 @@ def main ():
                 iteraciones = pedir_iteraciones()
                 resultado = metodo_jacobi(matriz_a, matriz_x, matriz_b, iteraciones)
                 imprimir_resultados(resultado, iteraciones)
+                break
             else:
                 print(
                     "\nLa matriz reordenada sigue sin estar bien condicionada. Por favor vuelva a intentarlo.")
